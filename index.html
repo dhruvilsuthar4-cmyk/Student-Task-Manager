@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyTask Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            📚 StudyTask
+        </div>
+
+        <nav>
+            <a href="#dashboard">Dashboard</a>
+            <a href="#add-task">Add Task</a>
+            <a href="#tasks">Tasks</a>
+        </nav>
+
+        <button id="themeBtn" class="theme-btn" aria-label="Toggle dark mode">
+            🌙 Dark
+        </button>
+
+    </header>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="container">
+
+
+        <!-- ================= DASHBOARD ================= -->
+
+        <section id="dashboard">
+
+            <div class="welcome">
+                <div>
+                    <p class="welcome-small">Welcome to</p>
+                    <h1>StudyTask Manager</h1>
+                    <p>Manage your study tasks, track your progress and stay productive.</p>
+                </div>
+            </div>
+
+            <!-- Statistics -->
+
+            <div class="stats">
+
+                <!-- Total -->
+                <div class="stat-card">
+                    <div class="stat-icon">📚</div>
+                    <div>
+                        <p class="stat-label">Total Tasks</p>
+                        <h2 id="totalTasks">0</h2>
+                    </div>
+                </div>
+
+                <!-- Pending -->
+                <div class="stat-card">
+                    <div class="stat-icon">⏳</div>
+                    <div>
+                        <p class="stat-label">Pending</p>
+                        <h2 id="pendingTasks">0</h2>
+                    </div>
+                </div>
+
+                <!-- Completed -->
+                <div class="stat-card">
+                    <div class="stat-icon">✅</div>
+                    <div>
+                        <p class="stat-label">Completed</p>
+                        <h2 id="completedTasks">0</h2>
+                    </div>
+                </div>
+
+                <!-- Today -->
+                <div class="stat-card">
+                    <div class="stat-icon">📅</div>
+                    <div>
+                        <p class="stat-label">Today's Tasks</p>
+                        <h2 id="todayTasks">0</h2>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= ADD TASK ================= -->
+
+        <section id="add-task" class="card">
+
+            <div class="section-heading">
+                <div>
+                    <h2>Add New Task</h2>
+                    <p>Create a new study task</p>
+                </div>
+            </div>
+
+            <form id="taskForm">
+
+                <div class="form-grid">
+
+                    <!-- Title -->
+                    <div class="form-group">
+                        <label for="taskTitle">Task Title</label>
+                        <input
+                            type="text"
+                            id="taskTitle"
+                            placeholder="Example: Complete Java assignment"
+                            required
+                        >
+                    </div>
+
+                    <!-- Subject -->
+                    <div class="form-group">
+                        <label for="taskSubject">Subject</label>
+                        <select id="taskSubject" required>
+                            <option value="">Select Subject</option>
+                            <option value="Java">Java</option>
+                            <option value="JavaScript">JavaScript</option>
+                            <option value="HTML">HTML</option>
+                            <option value="CSS">CSS</option>
+                            <option value="Database">Database</option>
+                            <option value="Python">Python</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <!-- Due Date -->
+                    <div class="form-group">
+                        <label for="taskDate">Due Date</label>
+                        <input
+                            type="date"
+                            id="taskDate"
+                            required
+                        >
+                    </div>
+
+                    <!-- Priority -->
+                    <div class="form-group">
+                        <label for="taskPriority">Priority</label>
+                        <select id="taskPriority" required>
+                            <option value="">Select Priority</option>
+                            <option value="High">High</option>
+                            <option value="Medium">Medium</option>
+                            <option value="Low">Low</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <!-- Description -->
+                <div class="form-group">
+                    <label for="taskDescription">Description</label>
+                    <textarea
+                        id="taskDescription"
+                        rows="4"
+                        placeholder="Enter task description..."
+                    ></textarea>
+                </div>
+
+                <button type="submit" class="primary-btn">+ Add Task</button>
+
+            </form>
+
+        </section>
+
+
+        <!-- ================= TASK LIST ================= -->
+
+        <section id="tasks" class="card">
+
+            <div class="section-heading">
+                <div>
+                    <h2>My Tasks</h2>
+                    <p>Search, filter and manage your tasks</p>
+                </div>
+            </div>
+
+            <!-- Search + Filters -->
+            <div class="filters">
+
+                <div class="search-box">
+                    <span>🔍</span>
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Search tasks..."
+                    >
+                </div>
+
+                <select id="statusFilter">
+                    <option value="All">All Status</option>
+                    <option value="Pending">Pending</option>
+                    <option value="Completed">Completed</option>
+                </select>
+
+                <select id="subjectFilter">
+                    <option value="All">All Subjects</option>
+                    <option value="Java">Java</option>
+                    <option value="JavaScript">JavaScript</option>
+                    <option value="HTML">HTML</option>
+                    <option value="CSS">CSS</option>
+                    <option value="Database">Database</option>
+                    <option value="Python">Python</option>
+                    <option value="Other">Other</option>
+                </select>
+
+            </div>
+
+            <!-- Tasks render here -->
+            <div id="taskList" class="task-list"></div>
+
+            <!-- Empty state -->
+            <div id="emptyMessage" class="empty-message">
+                <div>📚</div>
+                <h3>No Tasks Found</h3>
+                <p>Add your first study task to get started.</p>
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+        <p>© 2026 StudyTask Manager</p>
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
